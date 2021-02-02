@@ -23,7 +23,7 @@ Module BetterCalculator
             Console.WriteLine("enter the first number")
             Try
                 userInput = Console.ReadLine()
-                firstNumber = CInt(userInput)
+                firstNumber = CInt(userInput)                                                   'catches inputs that are not numbers
                 problem = False
             Catch e As Exception
                 Console.WriteLine($"I need a number, you entered {userInput}")
@@ -48,7 +48,7 @@ Module BetterCalculator
         End While
 
         If userInput = "Q" Then
-            Console.Clear()
+            Console.Clear()                                                                     'exits the console if "Q" is entered
             End
         End If
 
@@ -61,7 +61,7 @@ Module BetterCalculator
         thirdNumber = Console.ReadLine()
 
         If thirdNumber = "Q" Then
-            Console.Clear()
+            Console.Clear()                                                                     'Backup in case Q is entered 
             End
 
         End If
@@ -70,7 +70,7 @@ Module BetterCalculator
             If thirdNumber = "Q" Then
                 Console.Clear()
             End If
-            While CDec(thirdNumber) > CDec(4) And problem2 = True
+            While CDec(thirdNumber) > CDec(4) And problem2 = True                                   'catches entrys that are not 1-4
                 Console.WriteLine($"I need a number between 1 and 4.")
                 Try
 
@@ -93,7 +93,7 @@ Module BetterCalculator
         End If
 
         If CDec(thirdNumber) = 2 Then
-            Console.WriteLine($"{firstNumber} - {secondNumber} = {firstNumber - secondNumber}")
+            Console.WriteLine($"{firstNumber} - {secondNumber} = {firstNumber - secondNumber}")                             'this code executes the calculations
         End If
 
         If CDec(thirdNumber) = 3 Then
