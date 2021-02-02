@@ -14,7 +14,8 @@ Module BetterCalculator
         Dim secondNumber As Decimal
         Dim userInput As String
         Dim problem As Boolean = True
-        Dim thirdNumber As Decimal
+        Dim thirdNumber As String
+        Dim problem2 As Boolean = True
 
         Console.WriteLine("Please enter two numbers.")
         Console.WriteLine("Enter ""Q"" at any time to quit")
@@ -46,38 +47,60 @@ Module BetterCalculator
             End Try
         End While
 
+        If userInput = "Q" Then
+            Console.Clear()
+            End
+        End If
+
         Console.WriteLine("Choose one of the following options:")
         Console.WriteLine("1 to add.")
         Console.WriteLine("2 to subtract.")
         Console.WriteLine("3 to multiply.")
         Console.WriteLine("4 to divide.")
 
-        thirdNumber = CDec(Console.ReadLine)
+        thirdNumber = Console.ReadLine()
 
-        While thirdNumber <> CDec(1 & 2 & 3 & 4)
-            Console.WriteLine("Enter 1 - 4")
-            Try
-                thirdNumber = CDec(1 & 2 & 3 & 4)                                                         'fix this code
-            Catch e As Exception
-                Console.WriteLine($"I need 1-4, you entered {thirdNumber}")
+        If thirdNumber = "Q" Then
+            Console.Clear()
+            End
 
-            End Try
+        End If
 
-        End While
+        If CDec(thirdNumber) > 4 Then
+            If thirdNumber = "Q" Then
+                Console.Clear()
+            End If
+            While CDec(thirdNumber) > CDec(4) And problem2 = True
+                Console.WriteLine($"I need a number between 1 and 4.")
+                Try
 
-        If thirdNumber = 1 Then
+                    thirdNumber = Console.ReadLine()
+                    problem2 = True
+
+                Catch ex As Exception
+
+                    thirdNumber = Console.ReadLine()
+                    If CDec(thirdNumber) > CDec(4) Then
+                        problem2 = False
+                    End If
+                End Try
+            End While
+        End If
+
+
+        If CDec(thirdNumber) = 1 Then
             Console.WriteLine($"{firstNumber} + {secondNumber} = {firstNumber + secondNumber}")
         End If
 
-        If thirdNumber = 2 Then
+        If CDec(thirdNumber) = 2 Then
             Console.WriteLine($"{firstNumber} - {secondNumber} = {firstNumber - secondNumber}")
         End If
 
-        If thirdNumber = 3 Then
+        If CDec(thirdNumber) = 3 Then
             Console.WriteLine($"{firstNumber} * {secondNumber} = {firstNumber * secondNumber}")
         End If
 
-        If thirdNumber = 4 Then
+        If CDec(thirdNumber) = 4 Then
             Console.WriteLine($"{firstNumber} / {secondNumber} = {firstNumber / secondNumber}")
         End If
 
